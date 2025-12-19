@@ -47,10 +47,59 @@ let cleanDealerName = properTitleCase;
 console.log(`Cleaned Dealer Name:${cleanDealerName}`);
 
 //6. Validation check using comparison operators to verify cleanDealerName
-if(cleanDealerName.length>2){
-    if(cleanDealerName != ""){
-        console.log("Valid dealer name")
-    }
-}else{
-    console.log("Invalid dealer name")
+if (cleanDealerName.length > 2) {
+  if (cleanDealerName != "") {
+    console.log("Valid dealer name");
+  }
+} else {
+  console.log("Invalid dealer name");
 }
+
+//Part C: Conditional Logic and Business Rules
+//7. Variables for procurement record
+let userRole = "Sales Agent";
+let procurementTonnage = 1500;
+let produceType = "Beans";
+let costInUgx = "50000";
+
+//8. Implementing KGL business rules
+//Rule 1
+if (userRole === "Sales Agent") {
+  console.log("Sales agents can't record procurements!");
+} else if (procurementTonnage >= 1000) {
+  //rule 2
+  let cost = Number(costInUgx);
+  if (cost >= 10000) {
+    //rule 3
+    //console.log("valid record");//This is commmented out because the question didn't require a log for it
+  } else {
+    //console.log("cost is less than 5 digits");//This is commmented out because the question didn't require a log for it
+  }
+} else {
+  //console.log("low tonnage"); //This is commmented out because the question didn't require a log for it
+}
+
+//9. Use the logical AND(&&) operator
+if (procurementTonnage >= 1000 && Number(costInUgx) >= 10000) {
+  console.log("Procurement record valid");
+} else {
+  console.log("Procurement record invalid");
+}
+
+//Part D: Arrays and Produce Management
+//10. creating array
+let kglProduce = ["Beans", "Grain Maize", "Cow peas", "G-nuts", "Soybeans"];
+
+//11. code to add, remove and log final array
+kglProduce.push("Green Peas"); //adding green peas
+kglProduce.shift(); // removing the first item from the array
+kglProduce.includes("G-nuts"); //checking for g-nuts in the array
+
+console.log(kglProduce);
+
+console.log(`The length of the final array is ${kglProduce.length}`);
+
+//12.second array
+let branch2Produce = ["Maize", "Beans"];
+//merging the array to kglProduce array
+let allProduce = branch2Produce.concat(kglProduce);
