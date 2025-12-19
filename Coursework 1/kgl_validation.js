@@ -30,3 +30,27 @@ when a branch is closed it shoould not accidentally
 be included in the list of open branches 
 */
 
+//Part B: String Manipulation and Validation
+//4. variable declaration and initialization
+let dealerNameInput = " james BOND ";
+
+//5. code to remove the whitespaces
+let noSpaceDealerName = dealerNameInput.trim().toLowerCase();
+//codes to make capital the first letters of the name
+let properTitleCase = noSpaceDealerName
+  .split(" ")
+  .map(
+    (namePart) => namePart[0].toUpperCase() + namePart.slice(1).toLowerCase()
+  )
+  .join(" ");
+let cleanDealerName = properTitleCase;
+console.log(`Cleaned Dealer Name:${cleanDealerName}`);
+
+//6. Validation check using comparison operators to verify cleanDealerName
+if(cleanDealerName.length>2){
+    if(cleanDealerName != ""){
+        console.log("Valid dealer name")
+    }
+}else{
+    console.log("Invalid dealer name")
+}
