@@ -100,7 +100,21 @@ for (sales of salesRecords) {
   if (sales.isCreditSale === true) {
     count++; //when creditsale is true add 1 to isCreditCount
   } else {
-    continue;//skip if isCreditSale ==== false
+    continue; //skip if isCreditSale ==== false
   }
 }
-console.log(count);
+console.log(`Total credit sales:${count}`);
+
+//9. Simulating a stock credit check
+let inventory = [
+  { name: "Beans", tonnage: 500 },
+  { name: "Maize", tonnage: 0 },
+  { name: "G-nuts", tonnage: 300 },
+];
+//for loop with break statement when tonnage is ===0
+for(item of inventory){
+  if(item.tonnage===0){
+    console.log(`Manager Alert:${item.name} is out of stock`)
+    break;
+  }
+}
