@@ -124,6 +124,48 @@ authorizedRoles.add("Director");
 let isAuthorizedForProcurement = (userRole) => {
   return authorizedRoles.has(userRole);
 };
-console.log(isAuthorizedForProcurement('Director'))
-console.log(isAuthorizedForProcurement('Manager'))
-console.log(isAuthorizedForProcurement('Sales Agent'))
+console.log(isAuthorizedForProcurement("Director"));
+console.log(isAuthorizedForProcurement("Manager"));
+console.log(isAuthorizedForProcurement("Sales Agent"));
+
+//Part C: Maps for Price Management
+//7. Create a map called kglPriceList with the given key-value pairs
+const kglPriceList = new Map([
+  ["Beans", 5500],
+  ["Grain Maize", 4800],
+  ["Cow peas", 6000],
+  ["G-nuts", 7200],
+  ["Soybeans", 5800],
+]);
+
+//8.A function calculateSaleTotal with two parameters
+const calculateSaleTotal = (produceName, tonnageInKgs) => {
+  //define a variable pricePerKg
+  const pricePerKg = kglPriceList.get(produceName);
+  //check if the produce doesn't exist
+  if (!pricePerKg) {
+    return "Price not found";
+  } else {
+    //total sale amount
+    return pricePerKg * tonnageInKgs;
+  }
+};
+//testing with multiple produce types
+console.log(calculateSaleTotal("Beans", 50));
+console.log(calculateSaleTotal("Grain Maize", 60));
+console.log(calculateSaleTotal("cow peas", 10));
+console.log(calculateSaleTotal("Millet", 110));
+console.log(calculateSaleTotal("Soybeans", 10));
+
+//9. A code to iterate over the kglPricelist Map
+kglPriceList.forEach((key, value) => {
+  console.log(`Produce:${value}, Price per Kg:${key}Ugx`);
+});
+//calculating the highest price
+//First convert to array in order to use reduce()
+const prices = [...kglPriceList.values()];
+const highestPrice = prices.reduce((maximum, currentPrice) => {
+  return currentPrice > maximum ? currentPrice : maximum;
+}, 0);
+//log the highest price
+console.log(`Highest price is ${highestPrice}`);
